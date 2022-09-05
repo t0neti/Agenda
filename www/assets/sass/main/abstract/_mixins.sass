@@ -1,0 +1,52 @@
+// Mixins
+@mixin hr($border)
+  border: $border
+
+@mixin pin($top, $right, $bottom, $left)
+  top: $top
+  right: $right
+  bottom: $bottom
+  left: $left
+
+@mixin flex($justify, $align, $direction)
+  display: flex
+  justify-content: $justify
+  align-items: $align
+  flex-direction: $direction
+
+@mixin bgImg($url, $position, $size, $repeat)
+  background-image: url($url)
+  background-position: $position
+  background-size: $size
+  background-repeat: $repeat
+
+@mixin animation($name, $duration, $fill)
+  animation-name: $name
+  animation-duration: $duration
+  animation-timing-function: ease-in-out
+  animation-fill-mode: $fill
+
+@mixin centerX
+  margin:
+    right: auto
+    left: auto
+
+@mixin centerY
+  margin:
+    top: auto
+    bottom: auto
+
+// Responsive mixins
+// Bootstrap breakpoints
+
+@mixin tablet
+  @media only screen and (min-width: 768px)
+  @content
+
+@mixin desktop
+  @media only screen and (min-width: 992px)
+  @content
+
+@mixin large
+  @media only screen and (min-width: 1200px)
+  @content

@@ -1,0 +1,60 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    container_name: ${MARIADB_DATABASE}-mariadb
+    restart: 'no'
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+    ports:
+      - ${MARIADB_PORT}:3306
+    #copia de seguridad por si la base de datos cae
+    volumes:
+      - ./db:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    container_name: ${MARIADB_DATABASE}-adminer
+    restart: 'no'
+    ports:
+      - ${ADMINER_PORT}:8080
+    links:
+      - db
+
+  php:
+    build:
+      context: ./docker/php
+      args:
+        php_version: 8.1-apache
+    container_name: ${MARIADB_DATABASE}-php
+    restart: 'no'
+    environment:
+      MARIADB_HOST: ${MARIADB_DATABASE}-mariadb
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+    ports:
+      - ${PHP_PORT}:80
+    links:
+      - db
+    volumes:
+      - ./www:/var/www/html/
+
+  # Enviar mails (ejemplo con mailhog)
+  mailhog:
+    image: mailhog/mailhog
+    #ports pueden verlo los contenedores y tu mismo ordenador.(te pueden piratear ya que enntran a la info de tu pc)
+    ports:
+      - 8025:8025
+      #expose es que el puerto es accesible por los contenedores pero no por tu propio ordenador(solo muestras la imagen de tu proyecto)
+    expose:
+      - 1025
+
+volumes:
+  db:
+    external: true
