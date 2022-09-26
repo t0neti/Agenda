@@ -27,10 +27,9 @@ if ($borrado) {
 <?php require_once("componentes/head.php"); ?>
     <main class="main main-container">
         <section class="contactos__header">
-            <div class="contactos__header-items">
-                <a href="nuevoContacto.php"><img class="contactos__header-img" src="/assets/img/Smiley.png" alt="avatar"></a>
-                <p>Contactos</p>
-                <a><img class="ncontacto__header-img" src=""  alt="foto_perfil"></a>
+            <div class="header__login-items">
+                <a href="nuevoContacto.php"><img class="header__login-img" src="/assets/img/Smiley.png" alt="avatar"></a>
+                <p class="header__login-text">Contactos</p>
             </div>
         </section>
         <section>

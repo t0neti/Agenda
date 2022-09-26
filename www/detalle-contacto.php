@@ -43,11 +43,10 @@ if(!isset($_SESSION["usuario"])) {
 <?php require_once("componentes/head.php"); ?>
 <main class="main main-container">
     <section class="contactos__header">
-        <div class="contactos__header-items">
-            <a href="nuevoContacto.php"><img class="contactos__header-img" src="/assets/img/Smiley.png"
+        <div class="header__login-items">
+            <a href="nuevoContacto.php"><img class="header__login-img" src="/assets/img/Smiley.png"
                                              alt="avatar"></a>
-            <p>Contacto</p>
-            <a><img class="ncontacto__header-img" src="" alt="foto_perfil"></a>
+            <p class="header__login-text">Contacto</p>
         </div>
     </section>
     <section>

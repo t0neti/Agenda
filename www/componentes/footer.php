@@ -26,7 +26,7 @@
         <div class="footer_item">
                 <img src="/assets/img/user.png" class="footer_img img-noactive" alt="favoritos_disable">
                 <img src="/assets/img/user_nc.png" class="footer_img img-active" alt="favoritos_enable">
-                <p class="footer_item-text">Perfil</p>
+                <p class="footer_item-text">Salir</p>
         </div>
     </a>
 </nav>

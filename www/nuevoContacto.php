@@ -116,10 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['usuario'])) {
 <?php require_once("componentes/head.php"); ?>
 <main class="main main-container">
     <section class="ncontacto__header">
-        <div class="ncontacto__header-items">
-            <img class="ncontacto__header-img" src="/assets/img/Smiley.png" alt="avatar">
-            <p class="ncontacto__header-text">Nuevo</p>
-            <img class="ncontacto__header-img" src=""  alt="foto_perfil">
+        <div class="header__login-items">
+            <img class="header__login-img" src="/assets/img/Smiley.png" alt="avatar">
+            <p class="header__login-text">Nuevo</p>
         </div>
     </section>
     <section>

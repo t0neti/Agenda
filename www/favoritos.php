@@ -8,7 +8,7 @@ if(!isset($_SESSION["usuario"])) {
     exit();
 } else {
     // Prepara SELECT
-    $miContacto = $miPDO->prepare('SELECT * FROM contactos WHERE is_favorite = 1 ORDER BY nombre ASC');
+    $miContacto = $miPDO->prepare('SELECT * FROM contactos WHERE is_favorite = 1  ORDER BY nombre ASC');
 // Ejecuta consulta
     $miContacto->execute();
 }
@@ -17,10 +17,9 @@ if(!isset($_SESSION["usuario"])) {
 <?php require_once("componentes/head.php"); ?>
 <main class="main main-container">
     <section class="contactos__header">
-        <div class="contactos__header-items">
-            <a href="nuevoContacto.php"><img class="contactos__header-img" src="/assets/img/Smiley.png" alt="avatar"></a>
-            <p>Favoritos</p>
-            <a><img class="ncontacto__header-img" src=""  alt="foto_perfil"></a>
+        <div class="header__login-items">
+            <a href="nuevoContacto.php"><img class="header__login-img" src="/assets/img/Smiley.png" alt="avatar"></a>
+            <p class="header__login-text">Favoritos</p>
         </div>
     </section>
     <section>

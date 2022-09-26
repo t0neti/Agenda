@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $email !== null && $password !== nu
     // Si no hay errores, procedemos
     if (count($errores) === 0) {
         // ¿hay algun usuario con estas claves?
-        $miConsulta = $miPDO->prepare('SELECT id, password FROM usuario WHERE email = :email');
+        $miConsulta = $miPDO->prepare('SELECT id, password FROM usuario WHERE email = :email AND email_validado = 1');
 
         $miConsulta->execute([
             'email' => $email
