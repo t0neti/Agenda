@@ -80,10 +80,7 @@ if ($borrado) {
             </div>
             -->
             <div>
-
-            </div>
-            <div>
-                <h2>Todos</h2>
+                <h2 class="contactos__contact-text">Todos</h2>
             </div>
             <hr>
             <?php foreach ($listaContactos as $contact => $fila): ?>
