@@ -28,7 +28,7 @@
     <meta property="og:image:width" content="400">
     <meta property="og:image:height" content="300">
     <meta property="og:image:alt" content="">
-    <link href="css/mobile.css" rel="stylesheet" media="all and (max-width: 600px)">
+    <link href="assets/css/mobile.css" rel="stylesheet" media="all and (max-width: 600px)">
     <link href="css/desktop.css" rel="stylesheet" media="all and (min-width: 600px)">
     <!--- CDN de VUE --->
     <script src="https://unpkg.com/vue@3"></script>

@@ -3,7 +3,7 @@
 require_once('logica/conexion.php');
 
 session_start();
-
+$isFavorite = isset($_REQUEST['is_favorite']) && $_REQUEST['is_favorite'] === "on" ? 1 : 0;
 $borrado = isset($_REQUEST['borrado']) ? intval($_REQUEST['borrado']) : null;
 
 if(!isset($_SESSION["usuario"])) {
@@ -19,6 +19,7 @@ if(!isset($_SESSION["usuario"])) {
 }
     $listaContactos = $miContacto->fetchAll();
 
+
 if ($borrado) {
     echo 'Se ha eliminado un contacto';
 }
@@ -33,14 +34,16 @@ if ($borrado) {
             </div>
         </section>
         <section>
-            <div class="contactos__search">
-                <input type="text" class="contactos__search-box" placeholder="      Buscar ">
+            <div id="app">
+                <div class="contactos__search">
+                    <input type="text" class="contactos__search-box" v-model="search" @keyup.enter="buscarContactos()" placeholder="      Buscar ">
+                </div>
             </div>
         </section>
         <section>
             <aside>
                 <nav>
-                    <ul>
+                    <ul class="contactos__aside-ul">
                         <li>A</li>
                         <li>B</li>
                         <li>C</li>
@@ -86,7 +89,7 @@ if ($borrado) {
             <hr>
             <?php foreach ($listaContactos as $contact => $fila): ?>
             <div>
-                <a href="detalle-contacto.php?id=<?= $fila['id'];?>&nombre=<?= $fila['nombre'];?>&telefono=<?= $fila['telefono'];?>&email=<?= $fila['email']; ?>&notas=<?= $fila['notas']; ?>&picture=<?= $fila['picture']; ?>">
+                <a href="detalle-contacto.php?id=<?= $fila['id'];?>&nombre=<?= $fila['nombre'];?>&telefono=<?= $fila['telefono'];?>&email=<?= $fila['email']; ?>&notas=<?= $fila['notas']; ?>&picture=<?= $fila['picture']; ?>&is_favorite=<?= $fila['is_favorite'];?>">
                     <?php require('componentes/contacto.php');?>
                 </a>
             </div>

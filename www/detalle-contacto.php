@@ -11,6 +11,7 @@ $telefono = isset($_REQUEST['telefono']) ? $_REQUEST['telefono'] : null;
 $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;
 $notas = isset($_REQUEST['notas']) ? $_REQUEST['notas'] : "";
 $picture = isset($_REQUEST['picture']) ? $_REQUEST['picture'] : "";
+$isFavorite = isset($_REQUEST['is_favorite']) && $_REQUEST['is_favorite'] === "on" ? 1 : 0;
 
 // Si no hay sesión conectada, redireccionamos al login.php
 if(!isset($_SESSION["usuario"])) {
@@ -30,7 +31,9 @@ if(!isset($_SESSION["usuario"])) {
             'email' => $email,
             'notas' => $notas,
             'picture' => $picture,
-            'id' => $id
+            'id' => $id,
+            'is_favorite' => $isFavorite
+
         ]);
 
         // lo guardamos en una array para usarlo las veces que queramos.
@@ -49,29 +52,31 @@ if(!isset($_SESSION["usuario"])) {
     </section>
     <section>
             <!-- este campo recoge la id que vamos a modificar, arriba en variables la tenemos en un isset -->
+        <div>
             <input type="hidden" name="id" value="<?= $id;?>">
-            <div>
+            <div class="dContacto__box">
                 <label for="picture">
-                    <img src="<?php echo $picture; ?>">
+                    <img class="dContacto__box-img  " src="<?php echo $picture; ?>">
                 </label>
+            </div>
                 <label for="nombre">
-                    <p name="nombre"><?php echo $nombre; ?></p>
+                    <p  class="dContacto__box-info" name="nombre"><?php echo $nombre; ?></p>
                 </label>
                 <label for="telefono">
-                    teléfono:
-                    <p name="telefono"><?php echo $telefono; ?></p>
+                   <p class=dContacto__box-info-t">Teléfono:</p>
+                    <p class="dContacto__box-info" name="telefono"><?php echo $telefono; ?></p>
                 </label>
                 <label for="email">
-                     <p name="email"><?php echo $email; ?></p>
+                     <p class="dContacto__box-info" name="email"><?php echo $email; ?></p>
                 </label>
                 <label for="notas">
-                    notas:
-                     <p name="notas"><?php echo $notas; ?></p>
+                    <p class="dContacto__box-info-t">Notas:</p>
+                     <p class="dContacto__box-info" name="notas"><?php echo $notas; ?></p>
                 </label>
             </div>
             <div class="login__button login__button-login">
-                    <a href="modificar.php?id=<?= $id;?>&nombre=<?= $nombre;?>&telefono=<?= $telefono;?>&email=<?= $email; ?>&notas=<?= $notas; ?>&picture=<?= $picture; ?>" class="login__button-input"> Editar </a>
-                <a href="borrar.php?id=<?= $id;?>" class="login__button-input"> Eliminar </a>
+                <a href="modificar.php?id=<?= $id;?>&nombre=<?= $nombre;?>&telefono=<?= $telefono;?>&email=<?= $email; ?>&notas=<?= $notas; ?>&picture=<?= $picture; ?>" class="login__button-input"> <p class="dContacto__inputs-text">Editar</p></a>
+                <a href="borrar.php?id=<?= $id;?>" class="login__button-input"><p class="dContacto__inputs-text"> Eliminar </p></a>
             </div>
     </section>
 </main>

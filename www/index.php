@@ -3,7 +3,7 @@ require_once ('logica/conexion.php');
 
 ?>
 <?php require_once("componentes/head.php"); ?>
-<!--<meta http-equiv="Refresh" content="5;url=http://localhost/login.php">-->
+<meta http-equiv="Refresh" content="5;url=http://localhost/login.php">
 
 <main class="main bg-intro">
         <section class="intro">

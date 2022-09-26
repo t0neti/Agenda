@@ -8,7 +8,7 @@ if(!isset($_SESSION["usuario"])) {
     exit();
 } else {
     // Prepara SELECT
-    $miContacto = $miPDO->prepare('SELECT * FROM contactos WHERE is_favorite = 1;');
+    $miContacto = $miPDO->prepare('SELECT * FROM contactos WHERE is_favorite = 1 ORDER BY nombre ASC');
 // Ejecuta consulta
     $miContacto->execute();
 }
@@ -19,7 +19,7 @@ if(!isset($_SESSION["usuario"])) {
     <section class="contactos__header">
         <div class="contactos__header-items">
             <a href="nuevoContacto.php"><img class="contactos__header-img" src="/assets/img/Smiley.png" alt="avatar"></a>
-            <p>Contactos</p>
+            <p>Favoritos</p>
             <a><img class="ncontacto__header-img" src=""  alt="foto_perfil"></a>
         </div>
     </section>
@@ -31,7 +31,7 @@ if(!isset($_SESSION["usuario"])) {
     <section>
         <aside>
             <nav>
-                <ul>
+                <ul class="contactos__aside-ul">
                     <li>A</li>
                     <li>B</li>
                     <li>C</li>
@@ -68,15 +68,13 @@ if(!isset($_SESSION["usuario"])) {
         </div>
         <hr>
         <div>
-            <?php foreach ($miContacto as $clave): ?>
-                <article>
-                    <p><?= $clave['nombre']; ?></p>
-                    <p><?= $clave['telefono']; ?></p>
-                    <p><?= $clave['email']; ?></p>
-                    <p><?= $clave['notas']; ?></p>
-                    <hr>
-                </article>
-            <? endforeach; ?>
+            <?php foreach ($miContacto as $contact => $fila): ?>
+                <div>
+                    <a href="detalle-contacto.php?id=<?= $fila['id'];?>&nombre=<?= $fila['nombre'];?>&telefono=<?= $fila['telefono'];?>&email=<?= $fila['email']; ?>&notas=<?= $fila['notas']; ?>&picture=<?= $fila['picture']; ?>">
+                        <?php require('componentes/contacto.php');?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
         </div>
     </section>
 </main>
