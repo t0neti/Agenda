@@ -3,7 +3,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            search: "",
+            nombre: "",
+            nombreBuscar: "",
             contactos: []
         }
     },
@@ -31,8 +32,8 @@ createApp({
                 });
         },
         buscarContactos() {
-            if (this.search !== "") {
-                fetch('http://localhost:80/contactos/buscar/?nombre='.concat(this.search), {
+            if (this.nombreBuscar !== "") {
+                fetch('http://localhost:80/contactos/buscar/?nombre='.concat(this.nombreBuscar), {
                     headers: {
                         'Content-type': 'application/json'
                     },

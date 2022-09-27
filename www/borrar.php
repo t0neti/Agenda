@@ -1,11 +1,12 @@
 <?php
+// Eliminar un contacto de la agenda
 // Importamos
 require_once('logica/conexion.php');
-
+// Tenemos que estar login up
 session_start();
-
+//Variables
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
-
+// Si el método es Post y estamos login, procedemos a a buscar la id
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['usuario'])) {
 
     if ($id) {

@@ -1,6 +1,7 @@
 <?php
 //Imports
 require_once('logica/conexion.php');
+require_once ('logica/formatearDatos.php');
 
 session_start();
 $isFavorite = isset($_REQUEST['is_favorite']) && $_REQUEST['is_favorite'] === "on" ? 1 : 0;
@@ -20,12 +21,13 @@ if(!isset($_SESSION["usuario"])) {
     $listaContactos = $miContacto->fetchAll();
 
 
+
 if ($borrado) {
     echo 'Se ha eliminado un contacto';
 }
 ?>
 <?php require_once("componentes/head.php"); ?>
-    <main class="main main-container">
+    <div class="main main-container">
         <section class="contactos__header">
             <div class="header__login-items">
                 <a href="nuevoContacto.php"><img class="header__login-img" src="/assets/img/Smiley.png" alt="avatar"></a>
@@ -34,9 +36,11 @@ if ($borrado) {
         </section>
         <section>
             <div id="app">
+                <form action="GET">
                 <div class="contactos__search">
-                    <input type="text" class="contactos__search-box" v-model="search" @keyup.enter="buscarContactos()" placeholder="      Buscar ">
+                    <input type="text" class="contactos__search-box" v-model="nombreBuscar" @keyup.enter="buscarContactos()" placeholder="      Buscar ">
                 </div>
+                </form>
             </div>
         </section>
         <section>
@@ -91,5 +95,6 @@ if ($borrado) {
             </div>
             <?php endforeach; ?>
         </section>
-    </main>
+    </div>
+</main>
 <?php require_once("componentes/footer.php"); ?>
