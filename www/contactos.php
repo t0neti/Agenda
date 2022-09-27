@@ -7,11 +7,12 @@ session_start();
 $isFavorite = isset($_REQUEST['is_favorite']) && $_REQUEST['is_favorite'] === "on" ? 1 : 0;
 $borrado = isset($_REQUEST['borrado']) ? intval($_REQUEST['borrado']) : null;
 
+// Si no existe usuario, redireccionamos
 if(!isset($_SESSION["usuario"])) {
     header("Location: login.php");
     exit();
 } else {
-    // Prepara SELECT
+    // Prepara SELECT si existe sesión y procedemos
     $miContacto = $miPDO->prepare('SELECT * FROM contactos WHERE estado = 1 AND id_usuario = :id_usuario ORDER BY nombre ASC');
 // Ejecuta consulta
     $miContacto->execute([
@@ -20,11 +21,6 @@ if(!isset($_SESSION["usuario"])) {
 }
     $listaContactos = $miContacto->fetchAll();
 
-
-
-if ($borrado) {
-    echo 'Se ha eliminado un contacto';
-}
 ?>
 <?php require_once("componentes/head.php"); ?>
     <div class="main main-container">
